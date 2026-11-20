@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="site-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+          <div>
+            <p class="eyebrow">Developer toolkit</p>
+            <h1>Prompt Library</h1>
+          </div>
+        </div>
+        <span class="status-indicator"><span></span> Stored locally</span>
+      </header>
+
+      <section class="intro">
+        <p class="eyebrow">Your prompt workspace</p>
+        <h2>Capture ideas.<br /><span>Build better outputs.</span></h2>
+        <p class="intro-copy">
+          Keep your most useful prompts close, organized, and ready to run.
+        </p>
+      </section>
+
+      <section class="workspace" aria-label="Prompt library workspace">
+        <form class="prompt-form" id="prompt-form">
+          <div class="section-heading">
+            <span class="section-number">01</span>
+            <div>
+              <p class="eyebrow">New entry</p>
+              <h3>Create a prompt</h3>
+            </div>
+          </div>
+
+          <label for="prompt-title">Prompt title</label>
+          <input
+            id="prompt-title"
+            name="title"
+            type="text"
+            placeholder="e.g. Refactor review"
+            maxlength="80"
+            required
+          />
+
+          <label for="prompt-model">Model name</label>
+          <input
+            id="prompt-model"
+            name="model"
+            type="text"
+            placeholder="e.g. Claude Sonnet 4"
+            maxlength="100"
+            required
+          />
+
+          <label for="prompt-content">Prompt content</label>
+          <textarea
+            id="prompt-content"
+            name="content"
+            rows="8"
+            placeholder="Write your prompt here..."
+            required
+          ></textarea>
+
+          <button class="save-button" type="submit">
+            <span>Save prompt</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+        </form>
+
+        <section class="saved-prompts" aria-labelledby="saved-prompts-title">
+          <div class="section-heading">
+            <span class="section-number">02</span>
+            <div>
+              <p class="eyebrow">Your collection</p>
+              <h3 id="saved-prompts-title">Saved prompts</h3>
+            </div>
+            <span class="prompt-count" id="prompt-count">0</span>
+          </div>
+          <div class="library-actions" aria-label="Library import and export">
+            <button class="library-button" id="export-button" type="button">
+              Export JSON
+            </button>
+            <button class="library-button" id="import-button" type="button">
+              Import JSON
+            </button>
+            <input
+              id="import-file"
+              type="file"
+              accept="application/json,.json"
+              hidden
+            />
+          </div>
+          <p class="import-status" id="import-status" role="status"></p>
+          <div class="prompt-grid" id="prompt-list" aria-live="polite"></div>
+          <p class="empty-state" id="empty-state">
+            <span aria-hidden="true">✦</span>
+            Your saved prompts will appear here.
+          </p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
